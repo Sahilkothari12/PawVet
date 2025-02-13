@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sign Up - PawVets</title>
+    <style type="text/css">
+        body{
+            font-family: calibri;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f9f9f9;
+        }
+        .form-container{
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            width: 300px;
+        }
+        h2{
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        input[type="text"], input[type="email"], input[type="password"], select{
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button{
+            background-color: cornflowerblue;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover{
+            background-color: #6fa3ef;
+        }
+        .hidden{
+            display: none;
+        }
+    </style>
+    <script type="text/javascript">
+        function showFields() {
+            var role = document.getElementById("role").value;
+            if (role == "owner") {
+                document.getElementById("owner-fields").classList.remove("hidden");
+                document.getElementById("doctor-fields").classList.add("hidden");
+            } else if (role == "doctor") {
+                document.getElementById("doctor-fields").classList.remove("hidden");
+                document.getElementById("owner-fields").classList.add("hidden");
+            } else {
+                document.getElementById("owner-fields").classList.add("hidden");
+                document.getElementById("doctor-fields").classList.add("hidden");
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Sign Up</h2>
+        <form action="#" method="post">
+            <label for="role">I am a:</label>
+            <select id="role" name="role" onchange="showFields()" required>
+                <option value="">Select</option>
+                <option value="owner">Pet Owner</option>
+                <option value="doctor">Doctor</option>
+            </select>
+            
+            <div id="owner-fields" class="hidden">
+                <label for="pet_name">Pet Name</label>
+                <input type="text" id="pet_name" name="pet_name">
+                
+                <label for="pet_age">Pet Age</label>
+                <input type="text" id="pet_age" name="pet_age">
+                
+                <label for="pet_type">Pet Type</label>
+                <input type="text" id="pet_type" name="pet_type">
+            </div>
+            
+            <div id="doctor-fields" class="hidden">
+                <label for="license">License Number</label>
+                <input type="text" id="license" name="license">
+                
+                <label for="specialty">Specialty</label>
+                <input type="text" id="specialty" name="specialty">
+            </div>
+            
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+            
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+</body>
+</html>
